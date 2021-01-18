@@ -1,0 +1,57 @@
+<head>
+
+</head>
+
+<body>
+
+</body>
+<script>
+    //this app will be handled through the console so this will be base
+
+    //Your game is going to play against the computer, 
+    //so begin with a function called computerPlay that will randomly return either 
+    //‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to make the computer’s play.
+
+    //create an array with the three values
+    let RockPaperScissors = ["Rock", "Paper", "Scissors"]
+    //test to log an element of the array
+    //console.log(RockPaperScisscors.length)
+    //create a function that returns one random value from an array
+    function computerPlay(RockPaperScissors) {
+        let randomValue = Math.floor(Math.random() * 3)
+        console.log("this is the randomValue: " + randomValue)
+        let value = RockPaperScissors[randomValue];
+        console.log("this is the value: " + value)
+        return value
+    }
+
+    //function that gets input from the computer and the user compares them and calls out a winner
+    function playRound(playerSelection, computerSelection){
+        //make the input lowerCase to normalize the data
+        const playerLow = playerSelection.toLowerCase();
+        console.log("this is playerlow: " + playerLow);
+        const computerLow = computerSelection.toLowerCase();
+        console.log("this is computer low: " + computerLow)
+        //check who wins and return the answer
+        let answer = "placeholder"
+        if(playerLow === "paper" && computerLow === "scissors"){
+            answer = "You win " + playerLow + " beats " + computerLow;
+        }
+        else if(playerLow === "rock" && computerLow === "scissors"){
+            answer = "You win " + playerLow + " beats " + computerLow;
+        }
+        else if(playerLow === "scissors" && computerLow === "paper"){
+            answer = "You win " + playerLow + " beats " + computerLow;
+        }
+        else if(playerLow === computerLow){
+            answer = "It is a draw. " + playerLow + "is the same as " + computerLow 
+        }
+        else {
+            answer ="You lose " + playerLow + " gets beaten by " + computerLow;
+        }
+    return answer;
+    }
+    const playerSelection = "rock";
+    const computerSelection = computerPlay(RockPaperScissors);
+    console.log(playRound(playerSelection, computerSelection));
+</script>
