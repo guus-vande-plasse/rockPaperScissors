@@ -34,24 +34,55 @@
         console.log("this is computer low: " + computerLow)
         //check who wins and return the answer
         let answer = "placeholder"
+        //create variable to indicate that player has won
+        let winner = 0
         if(playerLow === "paper" && computerLow === "scissors"){
-            answer = "You win " + playerLow + " beats " + computerLow;
+            answer = "You win " + playerLow + " beats " + computerLow
+            winner++
         }
         else if(playerLow === "rock" && computerLow === "scissors"){
-            answer = "You win " + playerLow + " beats " + computerLow;
+            answer = "You win " + playerLow + " beats " + computerLow
+            winner++
         }
         else if(playerLow === "scissors" && computerLow === "paper"){
-            answer = "You win " + playerLow + " beats " + computerLow;
+            answer = "You win " + playerLow + " beats " + computerLow
+            winner++
         }
         else if(playerLow === computerLow){
-            answer = "It is a draw. " + playerLow + "is the same as " + computerLow 
+            answer = "It is a draw. " + playerLow + " is the same as " + computerLow 
         }
         else {
             answer ="You lose " + playerLow + " gets beaten by " + computerLow;
         }
-    return answer;
+        console.log(winner)
+        console.log(answer)
+        return winner
+    
+    }
+
+    //write NEW function called game(). 
+    //Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end
+    function game(){
+        //create a score variable which start at 0
+        let score = 0
+        //call PlayRound 5 times, when the round is won result will be 1
+        let result1 = playRound(playerSelection, computerSelection)
+        let result2 = playRound(playerSelection, computerSelection)
+        let result3 = playRound(playerSelection, computerSelection)
+        let result4 = playRound(playerSelection, computerSelection)
+        let result5 = playRound(playerSelection, computerSelection)
+        //sum the scores together
+        score = score + result1 + result2 + result3 + result4 + result5;
+        //check if you have won of the most of the rounds
+        if(score >2){
+            console.log("You won this battle at least 3 out of 5 times")
+        }
+        else {
+            console.log("You lost to many times :(")
+        }
     }
     const playerSelection = "rock";
     const computerSelection = computerPlay(RockPaperScissors);
-    console.log(playRound(playerSelection, computerSelection));
+    game()
+    //console.log(playRound(playerSelection, computerSelection));
 </script>
